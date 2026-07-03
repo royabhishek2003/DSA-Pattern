@@ -1,0 +1,39 @@
+// print left boundry value of tree 
+
+void leftboundery(node* root){
+  if(root==NULL) return;
+  if(root->left==NULL && root->right==NULL) return;
+  cout<<root->val<<" ";
+  leftboundery(root->left);
+  if(root->left==NULL) leftboundery(root->right);
+}
+
+// print the leaf 
+
+ void leaf(node* root){
+   if(root==NULL) return;
+   if(root->left==NULL && root->right==NULL) {
+     cout<<root->val<<" ";
+     return;
+   }
+   leaf(root->left);
+   leaf(root->right);
+ }
+ 
+ // print right boundry 
+ 
+ void rightboundry(node* root){
+   if(root==NULL) return;
+   if(root->left==NULL && root->right==NULL) return;
+   rightboundry(root->right);
+   if(root->right==NULL) rightboundry(root->left);
+    cout<<root->val<<" ";
+   
+ }
+ 
+ void printbounder(node* root){
+   cout<<"The boundry value of the graph is: ";
+   leftboundery(root);
+     leaf(root);
+ rightboundry(root->right);
+ }

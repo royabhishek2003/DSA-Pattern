@@ -1,0 +1,21 @@
+
+// implementing weightd graph using adjacency map 
+
+vector<unordered_map<int, int>> graph;
+int v;
+void add_edge(int src, int dst,int weight, bool birect= true){
+    graph[src].insert({dst, weight});// graph[src][dst]= weight
+  if(birect){
+    graph[dst].insert({src, weight});  // graph[dst][src]= weight
+  }
+}
+
+void display(){
+  for(int i=0;i<graph.size();i++){
+    cout<<i<<"-> ";
+    for(auto x: graph[i]){
+      cout<<"{"<<x.first<<","<<x.second<<"}"<<"  ";
+    }
+    cout<<endl;
+  }
+}

@@ -1,0 +1,33 @@
+/  quick sorting algorithm 
+
+
+int partition(vector<int> &v, int si, int ei){
+  int count=0;
+  int pivot=v[si];
+  for(int i=si+1;i<=ei;i++){
+    if(v[i]<=pivot) count++;
+  }
+  int pidx=count+si;
+  swap(v[si], v[pidx]);
+  int i=si;
+  int j=ei;
+  while(i<pidx && j>pidx){
+    if(v[i]<=pivot) i++;
+    if(v[j]>pivot)  j--;
+    else if (v[i]>pivot && v[j]<=pivot){
+      swap(v[i],v[j]);
+      i++;
+      j--;
+    }
+  }
+  return pidx;
+}
+
+// quick sort  sorting 
+
+void quicksort(vector<int> &v, int si, int ei){
+  if(si>=ei) return;
+  int pi=partition(v,si,ei);
+  quicksort(v,si,pi-1);
+  quicksort(v,pi+1,ei);
+}

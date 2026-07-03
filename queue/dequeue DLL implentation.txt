@@ -1,0 +1,136 @@
+#include<iostream>
+#include<stack>
+#include<vector>
+#include<queue>
+using namespace std;
+
+// dequeue ( doubly ended queue) implementation through DLL 
+class node{
+    public:
+    int val;
+    node* next;
+    node* prev;
+    node(int val){
+        this->val=val;
+        next=prev=NULL;
+    }
+};
+class Dequeue{
+    public:
+    int size;
+    node* head;
+    node* tail;
+     Dequeue(){
+         size=0;
+         head=tail=NULL;
+     }
+     void pushback(int val){
+         node* temp=new node(val);
+         if(size==0){
+             head=tail=temp;
+             size++;
+         }
+         else{
+             tail->next=temp;
+             temp->prev=tail;
+             tail=temp;
+             size++;
+         }
+     }
+     void pushfront(int val){
+         node* temp=new node(val);
+         if(size==0){
+             head=tail=temp;
+             size++;
+         }
+         else{
+             temp->next=head;
+             head->prev=temp;
+             head=temp;
+             size++;
+         }
+     }
+     void popfront(){
+         if(size==0){
+             cout<<"DLL is empty:";
+             return ;
+         }
+         else if(size==1){
+             delete head;
+             head=tail=NULL;
+         }
+         else{
+          node* temp =head;
+          head=head->next;
+          head->prev=NULL;
+         delete temp;
+         }
+          size--;
+     }
+     void popback(){
+         if(size==0){
+             cout<<"DLL is empty:";
+             return ;
+         }
+         else if(size==1){
+             delete tail;
+             head=tail=NULL;
+         }
+         else{
+         node* temp =tail;
+         tail=tail->prev;
+          tail->next=NULL;
+         delete temp;
+         }
+     }
+     int front(){
+         if(size==0){
+             cout<<"List is empty";
+             return -1;
+         }
+         else{
+             return head->val;
+         }
+     }
+       int back(){
+         if(size==0){
+             cout<<"List is empty";
+             return -1;
+         }
+         else{
+             return tail->val;
+         }
+     }
+     void display(){
+         node* temp=head;
+         while(temp){
+             cout<<temp->val<<" ";
+             temp=temp->next;
+         }
+         cout<<endl;
+     }
+};
+int main(){
+
+
+// dequeue ( doubly ended queue) implementation through DLL 
+Dequeue q;
+q.pushback(10);
+q.pushback(20);
+q.pushback(30);
+q.pushback(40);
+q.pushback(50);
+q.pushback(60);
+q.display();
+q.pushfront(5);
+q.pushfront(1);
+q.display();
+q.popback();
+q.display();
+q.popfront();
+q.display();
+cout<<q.size<<endl;
+
+
+    return 0;
+}

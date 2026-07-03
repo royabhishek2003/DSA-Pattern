@@ -1,0 +1,40 @@
+// finding any path between two vertex using dfs 
+
+unordered_set<int> s; // for storing the visited node 
+
+bool dfs(int curr, int end){
+  if(curr==end) return true;
+  s.insert(curr);  // mark the visited 
+  for(auto neighbour: graph[curr]){   // find all neighbour 
+    if(not s.count(neighbour)){   // is neighbour is not visited 
+      int result = dfs(neighbour,end);  
+      if(result) return true;
+    }
+  }
+  return false;
+}
+bool anypath(int src, int dst){
+  return dfs(src, dst);
+}
+
+
+int main() {
+    
+    cin>>v;
+    graph.resize(v);
+    int edge;
+    cin>>edge;
+    while(edge--){
+      int src, dst;
+      cin>>src>>dst;
+      add_edge(src, dst);
+    }
+    display();
+    cout<<endl;
+    
+    int x,y;
+    cin>>x>>y;
+    if(anypath(x,y)) cout<<"There is a path between "<<x<<" and "<<y<<endl;
+   
+    return 0;
+}

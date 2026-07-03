@@ -1,0 +1,86 @@
+// to find the maxixum displace between two node (diameter of tree)
+
+
+
+  int maxpath=0;
+     int level(TreeNode* root){
+         if(root==NULL) return 0;
+        return 1+ max(level(root->left), level(root->right));
+     }
+     int helper(TreeNode* root){  // harnode pe visit karke uska max path nikalega 
+         if(root==NULL) return 0;
+        int lpath = level(root->left) + level(root->right);
+        if(maxpath< lpath) maxpath=lpath;
+        diameterOfBinaryTree(root->left);
+        diameterOfBinaryTree(root->right);
+        return maxpath;
+     }
+    int diameterOfBinaryTree(TreeNode* root) {
+       int maxpath=0;   // reinitialise kardiya kyun ki dusre teste caes ke liiye ye wapas se 0 ho jaye 
+
+       return helper(root);
+
+
+// to check weather two given tree is same or not
+
+
+bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p==NULL && q!=NULL) return false;
+        if(p!=NULL && q==NULL) return false;
+        if(p==NULL && q==NULL) return true;
+        if(p->val!=q->val) return false;
+        else if(!isSameTree(p->left, q->left)) return false;
+        else if(!isSameTree(p->right, q->right)) return false;
+        return true;
+    }
+
+
+// invert binary tree by swapping its left and right node 
+
+ TreeNode* invertTree(TreeNode* root) {
+        if(root==NULL) return NULL;
+        if(root->left==NULL && root->right==NULL) return root;
+        TreeNode* temp=root->left;
+        root->left=root->right;
+        root->right=temp;
+        invertTree(root->left);
+        invertTree(root->right);
+        
+        return root;
+    }
+
+// to store the path of all the leaf
+
+void path(string ans, vector<string> &s,TreeNode* root){
+        if(root==NULL ) return;
+        if(root->left==NULL && root->right==NULL){
+            ans+=to_string(root->val);
+            s.push_back(ans);
+            return;
+        }
+        path(ans+to_string(root->val)+"->",s, root->left);
+        path(ans+to_string(root->val)+"->",s, root->right);
+    }
+
+// to find the lowest ancestor of two node 
+
+ bool find(TreeNode* root, int value){
+        if(root==NULL) return false;
+        if(root->val==value) return true;
+        if(find(root->left, value)) return true;
+        if(find(root->right, value)) return true;
+        return false;
+    }
+       
+     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+         if(root->val==p->val || root->val==q->val  ) return root;
+       
+      else if( find(root->left, p->val) && find(root->right, q->val)) return root;
+       else if(find(root->right, p->val) && find(root->left, q->val)) return root;
+      else if(find(root->left, p->val)==true && find(root->left, q->val)==true){
+       return  lowestCommonAncestor(root->left, p, q);
+      }
+    else 
+       return  lowestCommonAncestor(root->right, p, q);
+
+     return root;

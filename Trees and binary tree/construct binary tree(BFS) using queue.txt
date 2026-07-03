@@ -1,0 +1,31 @@
+// constructa binary tree using queue(BFS);
+
+node* construct(vector<int> &arr){
+  node* root= new node(arr[0]);
+  queue<node*>q;
+  q.push(root);
+  int i=1;
+  int j=2;
+  while(q.size()>0 && i<arr.size()){
+    node* temp=q.front();
+    q.pop();
+    
+    node* l;
+    node* r;
+    if(arr[i]!=INT_MIN) l=new node(arr[i]);
+    else l=NULL;
+    if(j<arr.size() && arr[j]!=INT_MIN) r= new node(arr[j]);
+    else r=NULL;
+    
+    temp->left=l;
+    temp->right=r;
+    
+    if(temp->left!=NULL) q.push(temp->left);
+    if(temp->right!=NULL) q.push(temp->right);
+    
+    i+=2;
+    j+=2;
+  }
+  
+  return root;
+}

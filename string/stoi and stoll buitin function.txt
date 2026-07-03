@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+  string str="343894";
+  int x= stoi(str);  // convert string to integer
+  cout<<x<<endl;
+  x++;
+  str= to_string(x);
+  long long y= stoll(str);
+  cout<<y<<endl;
+    return 0;
+}

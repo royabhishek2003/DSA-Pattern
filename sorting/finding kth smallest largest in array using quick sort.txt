@@ -1,0 +1,15 @@
+ //finding the kth samllestlargest  element in a given array using quick sort 
+
+int quickselect(vectorint &arr, int k, int si, int ei, int n){
+  if(si=ei) return 0;
+  int pi= partition(arr,si,ei);
+  if(pi+1==n-k+1) return arr[pi];
+  else if(n-k+1pi+1) return quickselect(arr,k,pi+1,ei,n);
+  else
+    return quickselect(arr,k,si,pi-1,n);
+}
+
+int main() { 
+  int k=5;
+  vectorint arr={5,1,8,2,7,6,3,4};
+  coutquickselect(arr,k,0,arr.size()-1,arr.size());

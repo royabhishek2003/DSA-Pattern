@@ -1,0 +1,168 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+// to print a stack
+void printstack(stack<int>st){
+    stack<int> temp;
+      while(st.size()>0){
+     temp.push(st.top());
+      st.pop();
+  }
+      while(temp.size()>0){
+      cout<<temp.top()<<" "; 
+      st.push(temp.top());
+      temp.pop();
+  }
+  cout<<endl;
+  
+}
+int main() {
+   // stack 
+//   stack<int> st; // intialization
+//   cout<<st.size()<<endl;
+//   st.push(10);
+//   st.push(20);
+//   st.push(30);
+//   st.push(40);
+//   cout<<st.size()<<endl;
+//   st.pop();
+//   cout<<st.size()<<endl;
+//   cout<<st.top()<<endl;
+
+//   st.push(10);
+//   st.push(20);
+//   st.push(30);
+//   st.push(40);
+//   st.push(50);
+   
+   // printing the stack
+//   while(st.size()){
+//       cout<<st.top()<<" ";
+//       st.pop();
+//   }
+   // now our stack is empty we lost all the elements in the stack
+   
+  // print the stack without losting the elements
+  
+//   stack<int> temp;
+//   while(st.size()>0){
+//       cout<<st.top()<<" ";
+//      temp.push(st.top());
+//       st.pop();
+//   }
+//   cout<<endl;
+
+  // all the lement in the st reserved in the temp stack
+  // putting elements again in stack from temp
+//   while(temp.size()>0){
+// cout<<temp.top()<<" "; // printing the stack st bottom to top
+//       st.push(temp.top());
+//       temp.pop();
+//   }
+//   cout<<st.top(); 
+
+
+// reverse the stack by using two extra stack
+
+//  stack<int> st;
+//   st.push(10);
+//   st.push(20);
+//   st.push(30);
+//   st.push(40);
+//   st.push(50);
+   
+//   stack<int> st1;   
+//   printstack(st);
+//   while(st.size()){
+//       st1.push(st.top());
+//       st.pop();
+//   }
+//   stack<int> st2;
+//   while(st1.size()){
+//       st2.push(st1.top());
+//       st1.pop();
+//   }
+//   while(st2.size()){
+//       st.push(st2.top());
+//       st2.pop();
+//   }
+//     // all the elements in st is reversed
+//   printstack(st);
+
+// to push the elements in stack at bottom
+
+void pushatbottom(stack<int> &st, int num){
+    stack<int> temp;
+      while(st.size()>0){
+     temp.push(st.top());
+      st.pop();
+  }
+  st.push(num);
+      while(temp.size()>0){
+      st.push(temp.top());
+      temp.pop();
+  }
+
+
+// to push the elements at a given index in the stack
+
+void pushatindex(stack<int> &st, int index, int num){
+     stack<int> temp;
+    while(st.size()>index){
+      temp.push(st.top());
+      st.pop();
+    }
+    st.push(num);
+     while(temp.size()>0){
+      st.push(temp.top());
+      temp.pop();
+  }
+    
+}
+
+ // display the stack recursively in reverse order
+
+void displayrecrev(stack<int> &st){
+    if(st.size()==0) return;
+    cout<<st.top()<<" ";
+    int x=st.top();
+    st.pop();
+    displayrecrev(st);
+    st.push(x);
+}
+
+// display the stack by recursion 
+
+void displayrec(stack<int> &st){
+    if(st.size()==0) return;
+    int x=st.top();
+    st.pop();
+    displayrec(st);
+    st.push(x);
+    cout<<x<<" ";
+}
+
+// push an element at the bootom of a stack using recursion
+
+void pushatbottomrec(stack<int> &st, int num){
+    if(st.size()==0){
+        st.push(num);
+        return;
+    }
+    int x=st.top();
+    st.pop();
+    pushatbottomrec(st, num);
+    st.push(x);
+}
+
+void reversestack(stack<int> &st){
+    if(st.size()==0){
+        return;
+    }
+    int x=st.top();
+    st.pop();
+    reversestack(st);
+   pushatbottomrec(st,x);
+}
+
+

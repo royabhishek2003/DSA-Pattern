@@ -1,0 +1,57 @@
+// finding shortest distance between node vector  using BFS 
+
+// BFS traversal 
+void BFS(int src, vector<int> &dst){
+  unordered_set<int> visited;
+  
+  queue<int> q;
+  dst.resize(v, INT_MAX);
+  dst[src]=0;
+  visited.insert(src);
+  q.push(src);
+  while(q.size()>0){
+    int parent= q.front();
+    cout<<parent<<" ";      // printing the BFS traversal  value 
+    q.pop();
+    for(auto neighbour: graph[parent]){
+      if(not visited.count(neighbour)){
+        q.push(neighbour);
+        visited.insert(neighbour);
+        dst[neighbour]=dst[parent]+1;   // shortest distance parent + 1;
+        
+        }
+      }
+    }
+    cout<<endl;
+}
+
+
+
+
+int main() {
+    
+    cin>>v;
+    
+   graph.resize(v); int edge;
+    cin>>edge;
+    while(edge--){
+      int src, dst;
+      cin>>src>>dst;
+      add_edge(src, dst, false);
+    }
+    display();
+    cout<<endl;
+    
+    int x;
+    cin>>x;
+    vector<int> dis;
+    BFS(x, dis);
+    for(int i=0;i<dis.size();i++){
+      
+      cout<<dis[i]<<" ";
+    }
+    
+    
+   
+    return 0;
+}

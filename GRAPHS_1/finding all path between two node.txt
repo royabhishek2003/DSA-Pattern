@@ -1,0 +1,28 @@
+// finding all path between two node 
+
+vector<vector<int>> result;
+unordered_set<int> s; // for storing the visited node 
+
+void  dfs(int curr, int end, vector<int> &path){
+  if(curr==end){
+    path.push_back(curr);
+    result.push_back(path);
+    path.pop_back();
+    return;
+  }
+  path.push_back(curr);
+  s.insert(curr);
+  for(auto neighbour: graph[curr]){
+    if(not s.count(neighbour)){
+      dfs(neighbour,end, path);
+    }
+  }
+  path.pop_back();
+  s.erase(curr);   // for next possible path 
+  
+}
+void allpath(int src, int dst){
+     vector<int> path;
+     dfs(src, dst, path);
+}
+

@@ -1,0 +1,11 @@
+unordered_set<int> visited;
+void dfs(int curr){
+    cout<<curr<<" ";
+    visited.insert(curr);
+    for(auto neighbour: graph[curr]){
+        if(not visited.count(neighbour)){
+            dfs(neighbour);
+        }
+    }
+    
+}

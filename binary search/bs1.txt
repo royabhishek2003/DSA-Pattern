@@ -1,0 +1,79 @@
+// Q1. Given a sorted array of n elements and a target ‘x’. Find the last occurrence of ‘x’ in the array. If ‘x’
+// does not exist return -1.
+    // finding last occurece of x in the array 
+    
+    // int arr[] = {1,2,3,3,4,4,4,5} , x = 4;
+    // int n=sizeof(arr)/sizeof(arr[0]);
+    // int low=0;
+    // int high= n-1;
+    // while(low<=high){
+    //   int mid= low+ (high-low)/2;
+    //   if(arr[mid]==x){
+    //     if(mid!=n-1 && arr[mid+1]!=x) {
+    //       cout<<mid<<endl;
+    //       break;
+    //     }
+    //     else low= mid+1;
+    //   }
+    //   else if(arr[mid]>x) high=mid-1;
+    //   else low= mid+1;
+    // }
+    
+    //  Q2 Given a sorted binary array, efficiently count the total number of 1’s in it.
+    
+    
+    // int arr[]={0,0,0,0,1,1};
+    // int n= sizeof(arr)/sizeof(arr[0]);
+    // int low=0;
+    // int high=n-1;
+    // int st=-1;
+    // while(low<=high){
+    //   int mid= low +(high-low)/2;
+    //   if(arr[mid]==0) {
+    //     if(mid!=n-1 && arr[mid+1]!=0){
+    //       st=mid+1;
+    //       break;
+    //     }
+    //     else {
+    //       low= mid+1;
+    //     }
+    //   }
+    //   else if(arr[mid]==1){
+    //     high= mid-1;
+    //   }
+    // }
+    // // now we find the the statring index of the mid-1
+    // cout<< n-st;  
+    
+    
+    // q4. There is only one repeated number in nums, return this repeated number.
+    
+    // vector<int> v={1,2,3,3,4,5};
+    // int n= v.size();
+    // int low=1;
+    // int high= n-1;
+    // while(low<high){
+    //   int mid= low +(high-low)/2;
+    //   if(v[mid]!=mid+1){
+    //     high=mid;
+    //   }
+    //   else low=mid+1;
+    // }
+    // cout<<high;
+                    
+                    
+  //Q4.  to find weather a number is perfect sqare or not 
+  
+      int n= 36;
+      int low=1;
+      int high= n;
+      while(low<=high){
+        int mid= low +(high-low)/2;
+        if(mid*mid==n) {
+          cout<<"Yes";
+          break;
+        }
+        else if(mid*mid>n) high= mid-1;
+        else low=mid+1;
+      }
+                        

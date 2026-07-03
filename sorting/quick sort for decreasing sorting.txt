@@ -1,0 +1,30 @@
+// wanted to sort the array is decreasing order uisng quick sort
+
+int partition(vector<int> &nums, int si, int ei){
+  int pivot=nums[(si+ei)/2];
+  int count=0;
+  for(int i=si;i<=ei;i++){
+    if(i==(si+ei)/2) continue;
+    if(nums[i]>nums[(si+ei)/2]) count++;
+  }
+  int pi=count+si;
+  swap(nums[(si+ei)/2], nums[pi]);
+  int i=si;
+  int j=ei;
+  while(i<pi && j>pi){
+    if(nums[i]>nums[pi]) i++;
+    if(nums[j]<=nums[pi]) j--;
+    else if(nums[i]<=nums[pi] && nums[j]<nums[pi]){
+      swap(nums[i], nums[j]);
+      i++;
+      j--;
+    }
+  }
+  return pi;
+}
+void quicksort(vector<int> &nums, int si, int ei){
+    if(si>=ei) return;
+    int pi=partition(nums, si, ei);
+    quicksort(nums, 0, pi-1);
+    quicksort(nums, pi+1, ei);
+}

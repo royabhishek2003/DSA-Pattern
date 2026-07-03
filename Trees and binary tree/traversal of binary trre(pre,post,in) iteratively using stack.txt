@@ -1,0 +1,55 @@
+// traversing the tree iteratively using stack 
+// 1. preorder 
+
+void pre_iterative(node* root){
+  stack<node*> st;
+  st.push(root);
+  while(st.size()>0){
+    node* temp=st.top();
+    st.pop();
+    cout<<temp->val<<" ";
+    if(temp->right) st.push(temp->right);
+    if(temp->left) st.push(temp->left);
+  }
+  cout<<endl;
+}
+
+
+// 2.postorder
+
+void post_iterative(node* root){
+  stack<node*> st;
+  st.push(root);
+  vector<int> ans;
+  while(st.size()>0){
+    node* temp=st.top();
+    st.pop();
+    ans.push_back(temp->val);
+    if(temp->left) st.push(temp->left);
+    if(temp->right) st.push(temp->right);
+  }
+ reverse(ans.begin(),ans.end());
+ for(int ele: ans) cout<<ele<<" ";
+  cout<<endl;
+}
+
+// 3. inorder 
+
+void in_iterative(node* root){
+  stack<node*> st;  
+  node* temp=root;
+  while(st.size()>0 || temp!=NULL){
+    if(temp!=NULL){
+      st.push(temp);
+      temp=temp->left;
+    }
+    
+    else{
+      node* t= st.top();
+      st.pop();
+      cout<<t->val<<" ";
+      temp=t->right;
+    }
+  }
+  cout<<endl;
+}

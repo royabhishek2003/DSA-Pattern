@@ -1,0 +1,11 @@
+void DFS(int adj[MAX_VERTICES][MAX_VERTICES], int visited[MAX_VERTICES], int V, int curr) {
+    visited[curr] = 1;
+    cout << curr << " ";
+
+    // Traverse all vertices to find neighbors
+    for (int j = 0; j < V; j++) {
+        if (adj[curr][j] == 1 && !visited[j]) {
+            DFS(adj, visited, V, j);
+        }
+    }
+}

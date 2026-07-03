@@ -1,0 +1,10 @@
+// cycle sort 
+// element in arrray should be from 1 to n
+
+void cyclesort(vector<int> &v){
+  int i=0;
+  while(i<v.size()){
+    if(i==v[i]-1) i++;
+    else swap(v[i],v[v[i]-1]);
+  }
+}

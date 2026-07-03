@@ -1,0 +1,83 @@
+// ceating a tree node
+
+class node{
+  public:
+  int val;
+  node* left;
+  node* right;
+  node(int val){
+    this->val=val;
+    left=right=NULL;
+  }
+};
+
+// to display a binary trees
+
+void display(node* root){
+  if(root==NULL) return;
+  cout<<root->val<<" ";
+  display(root->left);
+  display(root->right);
+}
+
+// finding the sum of a tree node
+
+int sumtree(node* root){
+  if(root==NULL) return 0;
+  return root->val + sumtree(root->left) + sumtree(root->right);
+}
+
+// finding the size of binary trees
+
+int size(node* root){
+  if(root==NULL) return 0;
+  return 1+ size(root->left) + size(root->right);
+}
+
+// finding maxvalue node of a binary trees
+
+int maxvalue(node* root){
+  if(root==NULL) return INT_MIN;
+  return max(root->val,max(maxvalue(root->left), maxvalue(root->right)));
+}
+
+// finding the product of all the nodes
+
+int product(node* root){
+  if(root==NULL) return 1;
+  return root->val * product(root->left) * product(root->right);
+}
+
+// finding the level of the binary trees!
+
+int level(node* root){
+  if(root==NULL) return 0;
+ return  1+ max(level(root->left),level(root->right));
+}
+int main() {
+
+  // binary trees
+  node* a=new node(-1);   // root node 
+  node* b=new node(-2);
+  node* c=new node(-3);
+  node* d=new node(-4);
+  node* e=new node(-5);
+  node* f=new node(-6);
+  node* g=new node(-7);
+  a->left=b;
+  a->right=c;
+  b->left=d;
+  b->right=e;
+  c->left=f;
+  c->right=g;
+   
+  display(a);
+  cout<<endl;
+  cout<<sumtree(a)<<endl;
+  cout<<size(a)<<endl;
+  cout<<maxvalue(a)<<endl;
+  cout<<product(a)<<endl;
+  cout<<level(a)<<endl;
+   
+
+   
