@@ -51,7 +51,6 @@ int main() {
         }
 
         num.push(number);
-
         while (!ope.empty()) {
             int val2 = num.top();
             num.pop();
