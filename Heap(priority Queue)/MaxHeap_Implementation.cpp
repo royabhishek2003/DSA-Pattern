@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class heap{
   public:
   int size;
@@ -10,27 +11,24 @@ class heap{
     arr.resize(n);
     size=0;
   }
-  
-  void insert(int n){
+  void insert(int ele){
     if(size== capacity){
       cout<<"Heap is overflow"<<endl;
       return;
     }
     // fill the element 
     
-    int index= size;
-    arr[index]= n;
+    int index = size;
     size++;
-    
-    // check with the parent(rearranging)
-    
-    while(index>0 && arr[(index-1)/2]< arr[index]){
+    arr[index]= ele;
+
+    // check whether the heap property is satisfied or not 
+    while( index > 0 && arr[(index-1)/2] < arr[index]){
       swap(arr[(index-1)/2], arr[index]);
       index= (index-1)/2;
     }
     
   }
-  
   void print(){
     for(int i=0;i<size;i++){
       cout<<arr[i]<<" ";
@@ -55,15 +53,38 @@ class heap{
   
   // deletion of element
   
-  void Delete(){
-    if(size==0){
-       cout<<"Heap underflow";
-       return;
-    }
+void Delete() {
     
+    // if(size ==0){
+    //   cout<< "Heap is underflow"<<endl;
+    //   return;
+    // }
+    // arr[0]= arr[size -1];
+    // size --;
+    // int i=0;
+    // while(true){
+    //   int left = 2*i+1;
+    //   int right = 2*i+2;
+
+    //   if(left>=size) break;  // none of the child is present
+    //   int largest = left;
+    //   if(right<size && arr[right] > arr[left]){
+    //     largest= right;  // choose largest child 
+    //   }
+
+    //   if(arr[i]< arr[largest]){
+    //     swap(arr[i], arr[largest]);
+    //     i=largest;
+    //   }
+    //   else break;
+    // }
+
+    if(size==0){
+      cout<<"Heap is underflow"<<endl;
+      return;
+    }
     arr[0]= arr[size-1];
     size--;
-    if(size==0) return;
-    heapify(0);
+    heapify(0);  // take the 0th index to the right positin 
   }
 };

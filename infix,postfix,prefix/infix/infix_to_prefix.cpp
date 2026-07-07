@@ -27,7 +27,7 @@ int main() {
                 val.pop();
                 char ch= op.top();
                 op.pop();
-                string result= val1 + val2+ ch;
+                string result= ch + val1 + val2;
                 val.push(result);
             }
             op.push(ch);
@@ -41,7 +41,7 @@ int main() {
                 val.pop();
                 char ch= op.top();
                 op.pop();
-                string result= val1 + val2 + ch;
+                string result= ch + val1 + val2;
                 val.push(result);
     }
 

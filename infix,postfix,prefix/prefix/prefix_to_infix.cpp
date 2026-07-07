@@ -12,11 +12,7 @@ string res(string val1, string val2, char ch){
     return s;
 }
 int main() { 
- 
   // prefix to infix
-  
- 
- 
  string s;
  cin>>s;
  stack<string> val;

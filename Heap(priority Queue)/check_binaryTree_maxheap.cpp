@@ -17,7 +17,7 @@ int sizeOfTree(Node* root){
   return 1+ sizeOfTree(root->left)+ sizeOfTree(root->right);
 }
 
-// to chek wather a tree is complete binary trre or not 
+// to check whether a tree is complete binary tree or not  
 
 bool CBT(Node* root){
   int count=0;

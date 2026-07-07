@@ -13,9 +13,8 @@ string res(string val1, string val2, char ch){
 }
 int main() { 
  
-  // post fix to infix conversion
+  // postfix to infix conversion
   
- 
  
  string s;
  cin>>s;
